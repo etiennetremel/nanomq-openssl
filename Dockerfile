@@ -24,7 +24,7 @@ WORKDIR /nanomq/build
 RUN cmake -DNNG_ENABLE_TLS=ON -DNNG_TLS_ENGINE=open -DNNG_ENABLE_SQLITE=ON .. && make
 
 # --- Runtime stage ---
-FROM debian:12-slim
+FROM debian:trixie-slim
 
 WORKDIR /usr/local/nanomq
 
