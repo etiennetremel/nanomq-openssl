@@ -1,5 +1,5 @@
 # --- Build stage ---
-FROM gcc:15.2 AS builder
+FROM debian:bookworm-slim AS builder
 
 ARG NANOMQ_TAG=0.24.6
 
@@ -7,9 +7,12 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt update && \
   apt-get install -y --no-install-recommends \
+    ca-certificates \
+    build-essential \
     git \
     cmake \
     ninja-build \
+    libssl-dev \
     python3 && \
   rm -rf /var/lib/apt/lists/*
 
@@ -24,7 +27,7 @@ WORKDIR /nanomq/build
 RUN cmake -DNNG_ENABLE_TLS=ON -DNNG_TLS_ENGINE=open -DNNG_ENABLE_SQLITE=ON .. && make
 
 # --- Runtime stage ---
-FROM debian:trixie-slim
+FROM debian:bookworm-slim
 
 WORKDIR /usr/local/nanomq
 
