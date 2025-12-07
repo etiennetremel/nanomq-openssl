@@ -47,9 +47,6 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
     libnsl2 \
     && rm -rf /var/lib/apt/lists/*
 
-# Disable post-quantum key exchange (X25519MLKEM768) for TLS 1.3 compatibility with embedded-tls clients
-RUN sed -i '/^\[default_sect\]/a Groups = X25519:P-256:P-384' /etc/ssl/openssl.cnf
-
 EXPOSE 1883 8883
 
 ENTRYPOINT ["/usr/bin/docker-entrypoint.sh"]
