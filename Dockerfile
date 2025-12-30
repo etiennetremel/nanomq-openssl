@@ -1,7 +1,7 @@
 # --- Build stage ---
 FROM debian:bookworm-slim AS builder
 
-ARG NANOMQ_TAG=0.24.6
+ARG NANOMQ_TAG=0.24.7
 
 ENV DEBIAN_FRONTEND=noninteractive
 
