@@ -24,7 +24,7 @@ RUN git clone --recursive --branch ${NANOMQ_TAG} --depth 1 --single-branch https
 
 WORKDIR /nanomq/build
 
-RUN cmake -DNNG_ENABLE_TLS=ON -DNNG_TLS_ENGINE=open -DNNG_ENABLE_SQLITE=ON .. && make
+RUN cmake -DNNG_ENABLE_TLS=ON -DNNG_TLS_ENGINE=open -DNNG_ENABLE_IPV6=ON -DNNG_ENABLE_SQLITE=ON .. && make
 
 # --- Runtime stage ---
 FROM debian:bookworm-slim
