@@ -1,7 +1,8 @@
 # --- Build stage ---
 FROM debian:bookworm-slim AS builder
 
-ARG NANOMQ_TAG=0.24.7
+# renovate: datasource=github-tags packageName=nanomq/nanomq
+ARG NANOMQ_VERSION=0.24.7
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -20,7 +21,7 @@ WORKDIR /usr/src
 
 WORKDIR /nanomq
 
-RUN git clone --recursive --branch ${NANOMQ_TAG} --depth 1 --single-branch https://github.com/nanomq/nanomq.git .
+RUN git clone --recursive --branch ${NANOMQ_VERSION} --depth 1 --single-branch https://github.com/nanomq/nanomq.git .
 
 WORKDIR /nanomq/build
 
