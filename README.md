@@ -5,7 +5,16 @@ This repository contains a Dockerfile used to build [NanoMQ][nanomq] with
 [OpenSSL][openssl] as TLS engine instead of the [mbedTLS][mbedtls] (default).
 
 Image is following NanoMQ version and can be downloaded from GitHub Container
-Registry: `ghcr.io//etiennetremel/nanomq-openssl:v0.24.7`.
+Registry:
+
+```bash
+docker run -d \
+    --name nanomq \
+    -p 1883:1883 \
+    -p 8083:8083 \
+    -p 8883:8883 \
+    ghcr.io/etiennetremel/nanomq-openssl:v0.24.10
+```
 
 ___Why OpenSSL?___
 
