@@ -17,8 +17,6 @@ RUN apt update && \
     python3 && \
   rm -rf /var/lib/apt/lists/*
 
-WORKDIR /usr/src
-
 WORKDIR /nanomq
 
 RUN git clone --recursive --branch ${NANOMQ_VERSION} --depth 1 --single-branch https://github.com/nanomq/nanomq.git .
@@ -47,6 +45,8 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
     openssl \
     libnsl2 \
     && rm -rf /var/lib/apt/lists/*
+
+USER 1000:1000
 
 EXPOSE 1883 8883
 
