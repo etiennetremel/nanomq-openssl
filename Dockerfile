@@ -2,7 +2,7 @@
 FROM debian:bookworm-slim AS builder
 
 # renovate: datasource=github-tags packageName=nanomq/nanomq versioning=semver
-ARG NANOMQ_VERSION=0.24.10
+ARG NANOMQ_VERSION=0.24.11
 
 ENV DEBIAN_FRONTEND=noninteractive
 
